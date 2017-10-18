@@ -1,0 +1,28 @@
+<datasources>
+    <datasource jndi-name="java:/dbDs" pool-name="dbDsPool" enabled="true" use-java-context="true">
+        <connection-url>jdbc:postgresql://docker:5432/docker</connection-url>
+        <driver>postgres</driver>
+        <pool>
+            <min-pool-size>10</min-pool-size>
+            <max-pool-size>30</max-pool-size>
+            <prefill>true</prefill>
+        </pool>
+        <security>
+            <user-name>docker</user-name>
+            <password>docker</password>
+        </security>
+        <validation>
+            <valid-connection-checker
+                    class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+            <exception-sorter
+                    class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+        </validation>
+        <timeout>
+            <blocking-timeout-millis>60000</blocking-timeout-millis>
+            <idle-timeout-minutes>10</idle-timeout-minutes>
+        </timeout>
+        <statement>
+            <track-statements>true</track-statements>
+        </statement>
+    </datasource>
+</datasources>
